@@ -20,16 +20,17 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Flaskblog</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}">Flaskblog</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Features</a>
-                        <a class="nav-item nav-link" href="#">Pricing</a>
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+                        <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
                     </div>
+                    <a class="nav-item nav-link text-light" href="{{ url_for('register') }}">Sign Up</a>
+                    <a class="nav-item nav-link text-light" href="{{ url_for('login') }}">Login</a>
                 </div>
             </div>
         </nav>
@@ -46,11 +47,11 @@
                 <div class="content-section">
                     <h3>Our Sidebar</h3>
                     <p class="text-muted">You can put any information here you'd like.</p>
-                    <ul>
-                        <li>Latest Posts</li>
-                        <li>Announcements</li>
-                        <li>Calenders</li>
-                        <li>etc</li>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">Latest Posts</li>
+                        <li class="sidebar-menu-item">Announcements</li>
+                        <li class="sidebar-menu-item">Calenders</li>
+                        <li class="sidebar-menu-item">etc</li>
                     </ul>
                 </div>
             </div>
