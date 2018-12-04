@@ -5,6 +5,6 @@
 4. Run the project `python flaskblog.py` or `flask run` by exporting flaskblog.py to FLASK_APP in terminal.
 
 ## Stack Developer Docs
-1. Flask:point_right:http://flask.pocoo.org/docs/1.0/
-2. Jinja2:point_right:http://jinja.pocoo.org/docs/2.10/
-3. Sqllite3:point_right:https://docs.python.org/2/library/sqlite3.html 
+1. Flask: http://flask.pocoo.org/docs/1.0/
+2. Jinja2: http://jinja.pocoo.org/docs/2.10/
+3. Sqllite3: https://docs.python.org/2/library/sqlite3.html
