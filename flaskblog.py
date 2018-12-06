@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -28,9 +28,24 @@ def home():
 def about():
     return render_template("about.html", title="About")
 
+### REGISTRATION FORM AND ROUTE ###
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # Store the form model in a variable so that it is handy to use.
     form = RegistrationForm()
+
+    # Validate the form as user submit it and also display a flash message
+    # on the top of content block if the forms validates or returns errors.
+    if form.validate_on_submit():
+        # FLASH MESSAGE DISPLAY ON TOP
+        # To create a flash message pass two arguments:
+        #   - message
+        #   - category(for css styling purposes): success, error, warning etc.
+        flash(f'Account created for {form.username.data}!', category='success')
+        # REDIRECT TO HOMEPAGE ON VALIDATION
+        return redirect(url_for('home'))
+    
+    # If the form is not submited just simply render the register form.
     return render_template("register.html", title="Register", form=form)
 
 @app.route("/login", methods=["GET", "POST"])
