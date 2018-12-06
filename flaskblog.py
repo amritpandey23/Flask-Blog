@@ -2,6 +2,9 @@ from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
+
+# Anything that requires encryption (for safe-keeping against 
+# tampering by attackers) requires the secret key to be set.
 app.config["SECRET_KEY"] = "aaa269055db1c78ee6d59ef9"
 
 posts = [
@@ -19,14 +22,19 @@ posts = [
     }
 ]
 
+
+### HOME ROUTE ###
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("home.html", posts = posts, title="Home")
 
+
+### ABOUT PAGE ROUTE ###
 @app.route("/about")
 def about():
     return render_template("about.html", title="About")
+
 
 ### REGISTRATION FORM AND ROUTE ###
 @app.route("/register", methods=["GET", "POST"])
@@ -48,10 +56,17 @@ def register():
     # If the form is not submited just simply render the register form.
     return render_template("register.html", title="Register", form=form)
 
+
+### LOGIN FORM AND ROUTE ###
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     return render_template("login.html", title="login", form=form)
 
+
+# Every module in python has a special attribute called __name__ .
+# The value of __name__  attribute is set to '__main__'  when 
+# module run as main program. Otherwise the value of __name__  
+# is set to contain the name of the module.
 if __name__ == "__main__":
     app.run(debug = True)
