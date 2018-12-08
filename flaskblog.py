@@ -1,4 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
+# SQLAlchemy is an ORM(Object Relational Mapping) 
+# https://en.wikipedia.org/wiki/Object-relational_mapping
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
 
@@ -12,6 +14,18 @@ app.config["SECRET_KEY"] = "aaa269055db1c78ee6d59ef9"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 # Create database
 db = SQLAlchemy(app)
+
+# Table for User
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
+    password = db.Column(db.String(60), nullable=False)
+    # __repr__ is a built-in function used to compute 
+    # the "official" string reputation of an object.
+    def __repr__():
+        return f"User: ('{self.username}', '{self.email}', '{self.image_file}')"
 
 posts = [
     {
