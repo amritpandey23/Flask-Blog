@@ -23,19 +23,17 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
     password = db.Column(db.String(60), nullable=False)
-    posts = db.relationship("Post", backref="author", lazy=True)
     # __repr__ is a built-in function used to compute 
     # the "official" string reputation of an object.
     def __repr__():
         return f"User: ('{self.username}', '{self.email}', '{self.image_file}')"
 
-# Table for Post
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=DataTime.utcnow)
     content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
     def __repr__():
         return f"Post: ('{self.title', '{self.date_posted}')"
 
@@ -81,7 +79,7 @@ def register():
         # To create a flash message pass two arguments:
         #   - message
         #   - category(for css styling purposes): success, error, warning etc.
-        flash(f"Account created for {form.username.data}!", category="success")
+        flash(f'Account created for {form.username.data}!', category='success')
         # REDIRECT TO HOMEPAGE ON VALIDATION
         return redirect(url_for('home'))
     
