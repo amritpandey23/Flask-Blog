@@ -3,6 +3,7 @@ from flask import Flask, render_template, url_for, flash, redirect
 # https://en.wikipedia.org/wiki/Object-relational_mapping
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
+from datetime import DataTime
 
 app = Flask(__name__)
 
@@ -26,6 +27,15 @@ class User(db.Model):
     # the "official" string reputation of an object.
     def __repr__():
         return f"User: ('{self.username}', '{self.email}', '{self.image_file}')"
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=DataTime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+
+    def __repr__():
+        return f"Post: ('{self.title', '{self.date_posted}')"
 
 posts = [
     {
