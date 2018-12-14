@@ -2,6 +2,11 @@ from flask import render_template, url_for, flash, redirect
 from flaskblog import app
 from flaskblog.forms import RegistrationForm, LoginForm
 from flaskblog.models import User, Post
+# We have used flask_bcrypt to encrypt user password.
+from flask_bcrypt import Bcrypt
+from flaskblog import db
+
+bcrypt = Bcrypt()
 
 posts = [
     {
@@ -41,6 +46,11 @@ def register():
     # Validate the form as user submit it and also display a flash message
     # on the top of content block if the forms validates or returns errors.
     if form.validate_on_submit():
+        # Commit the details filled by end-user to database.
+        user = User(username=form.username.data, email=form.email.data, password=bcrypt.generate_password_hash(form.password.data))
+        db.session.add(user)
+        db.session.commit()
+
         # FLASH MESSAGE DISPLAY ON TOP
         # To create a flash message pass two arguments:
         #   - message
