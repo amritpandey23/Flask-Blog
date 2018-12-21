@@ -5,7 +5,7 @@ from flaskblog.models import User, Post
 # We have used flask_bcrypt to encrypt user password.
 from flask_bcrypt import Bcrypt
 from flaskblog import db
-from flask_login import login_user, current_user
+from flask_login import login_user, logout_user, current_user
 
 bcrypt = Bcrypt()
 
@@ -92,3 +92,8 @@ def login():
 
     # Render the login form when page loads
     return render_template("login.html", title="login", form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
