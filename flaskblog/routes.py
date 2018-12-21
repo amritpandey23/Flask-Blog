@@ -5,7 +5,7 @@ from flaskblog.models import User, Post
 # We have used flask_bcrypt to encrypt user password.
 from flask_bcrypt import Bcrypt
 from flaskblog import db
-from flask_login import login_user
+from flask_login import login_user, current_user
 
 bcrypt = Bcrypt()
 
@@ -41,6 +41,8 @@ def about():
 ### REGISTRATION FORM AND ROUTE ###
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     # Store the form model in a variable so that it is handy to use.
     form = RegistrationForm()
 
@@ -67,6 +69,8 @@ def register():
 ### LOGIN FORM AND ROUTE ###
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
 
     if form.validate_on_submit():
