@@ -41,8 +41,11 @@ def about():
 ### REGISTRATION FORM AND ROUTE ###
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
+    # if user is already logged in:
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+
     # Store the form model in a variable so that it is handy to use.
     form = RegistrationForm()
 
@@ -69,16 +72,23 @@ def register():
 ### LOGIN FORM AND ROUTE ###
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
+    # if user is already logged in:
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+
+    # Store form model in a variable so that it is handy
     form = LoginForm()
 
+    # When user have submitted the login form and is validated
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
+            # Send this user data to login manager to handle login session
             login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
         else:
             flash(f"Login unsuccessful, Check email or password!", category="danger")
 
+    # Render the login form when page loads
     return render_template("login.html", title="login", form=form)
