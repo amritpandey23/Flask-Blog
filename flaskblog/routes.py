@@ -5,6 +5,7 @@ from flaskblog.models import User, Post
 # We have used flask_bcrypt to encrypt user password.
 from flask_bcrypt import Bcrypt
 from flaskblog import db
+from flask_login import login_user
 
 bcrypt = Bcrypt()
 
@@ -67,4 +68,13 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            return redirect(url_for('home'))
+        else:
+            flash(f"Login unsuccessful, Check email or password!", category="danger")
+
     return render_template("login.html", title="login", form=form)
