@@ -1,0 +1,6 @@
+• CUSTOM VALIDATORS IN FLASK FORM - 21/12/2018
+    To add a custom validator, like we did in the username
+    and email fields on register form, define a function
+    as `validate_<field-name>`.
+
+• LOGIN MANAGER - 21/12/2018
