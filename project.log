@@ -4,3 +4,7 @@
     as `validate_<field-name>`.
 
 • LOGIN MANAGER - 21/12/2018
+    Flask-Login provides user session management for Flask.
+    It handles the common tasks of logging in, logging out,
+    and remembering your users’ sessions over extended periods
+    of time.
