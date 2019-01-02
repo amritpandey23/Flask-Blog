@@ -1,5 +1,5 @@
 ## Installation 
-*You'll need python3.6 or above, use your version of python instead of 3.7 in procedures below.*
+> You'll need python3.6 or above, use your version of python instead of 3.7 in procedures below.
 1. Clone and move into directory `git clone https://gitlab.com/amritpandey/flask-blog-2.git && cd flask-blog-2`
 2. Setup virtual environment `python3.7 -m venv venv`
 3. Install dependencies `pip3 install requirements.txt`
@@ -30,3 +30,7 @@
 │       └── register.html
 ├── run.py
 ```
+
+## Screenshots(Project in progress)
+![alt register-screenshot-flask-blog](https://imgur.com/81QK8vc)
+![alt home-screenshot-flaskblog](https://imgur.com/8cSqkiI)
