@@ -8,3 +8,23 @@
 1. Flask: http://flask.pocoo.org/docs/1.0/
 2. Jinja2: http://jinja.pocoo.org/docs/2.10/
 3. Sqllite3: https://docs.python.org/2/library/sqlite3.html
+
+## Package Structure
+```
+.
+├── flaskblog
+│   ├── __init__.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── static
+│   │   └── main.css
+│   └── templates
+│       ├── about.html
+│       ├── account.html
+│       ├── home.html
+│       ├── layout.html
+│       ├── login.html
+│       └── register.html
+├── run.py
+```
