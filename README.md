@@ -32,5 +32,5 @@
 ```
 
 ## Screenshots(Project in progress)
-![alt register-screenshot-flask-blog](https://imgur.com/81QK8vc)
-![alt home-screenshot-flaskblog](https://imgur.com/8cSqkiI)
+![alt register-screenshot-flask-blog](https://i.imgur.com/81QK8vc.jpg)
+![alt home-screenshot-flaskblog](https://i.imgur.com/8cSqkiI.jpg)
