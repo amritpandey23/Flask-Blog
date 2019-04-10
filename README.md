@@ -1,3 +1,6 @@
+# Flask Blog (Incomplete)
+You can find source code from tutorial upto video number 6(*User Authentication*). After that you are free to fork this repo and complete the entire project.
+
 ## Installation 
 > You'll need python3.6 or above, use your version of python instead of 3.7 in procedures below.
 1. Clone and move into directory `git clone https://gitlab.com/amritpandey/flask-blog-2.git && cd flask-blog-2`
