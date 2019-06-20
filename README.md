@@ -34,6 +34,6 @@ You can find source code from tutorial upto video number 6(*User Authentication*
 ├── run.py
 ```
 
-## Screenshots(Project in progress)
+## Screenshots
 ![alt register-screenshot-flask-blog](https://i.imgur.com/81QK8vc.jpg)
 ![alt home-screenshot-flaskblog](https://i.imgur.com/8cSqkiI.jpg)
